@@ -1,22 +1,26 @@
 {
-    "manifest_version": 2,
-    "name": "ChromeWebsiteExtensions",
-    "description": " Block website in a Chrome Extension that you wish not to visit.",
+    "manifest_version": 3,
+    "name": "Website Blocker Extension",
     "version": "1.0",
+    "description": "Block websites and store user preferences.",
+    "permissions": [
+      "activeTab",
+      "webRequest",
+      "storage"
+    ],
+    "action": {
+      "default_popup": "index.html"
+    },
     "icons": {
-        "16": "",
-        "48": "",
-        "128": ""
+      "16": "images/WebPhoto16.png",
+      "48": "images/WebPhoto16.png",
+      "128": "images/WebPhoto16.png"
     },
-    "page_action": {
-        "default_icon": {
-        "16": "",
-        "48": "",
-        "128": ""
-    },
-      "content_scripts": [{
-        "matches": [""],
-        "css": "main.css"
-      }]  
-    }
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["script.js"],
+        "run_at": "document_start"
+      }
+    ]
 }
